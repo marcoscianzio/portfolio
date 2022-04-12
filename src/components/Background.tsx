@@ -27,7 +27,7 @@ export const Background = styled.div`
   z-index: 800;
   pointer-events: none;
   background: transparent
-    url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+    url("https://user-images.githubusercontent.com/73872769/162917230-28049917-b6f5-443c-9369-6763e7fea2cd.png") repeat 0 0;
   background-repeat: repeat;
   animation: ${noise} 0.2s infinite;
   opacity: 0.9;
