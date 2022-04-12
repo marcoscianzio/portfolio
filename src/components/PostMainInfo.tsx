@@ -11,10 +11,12 @@ import Cover from "./Cover";
 import Date from "./Date";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 const PostMainInfo = ({ metadata }: PostMainInfoProps) => {
   const mobile = useBreakpointValue({ base: true, md: false });
   const router = useRouter();
+  let { t } = useTranslation();
 
   return (
     <Stack pb={10} spacing={10}>
@@ -29,7 +31,7 @@ const PostMainInfo = ({ metadata }: PostMainInfoProps) => {
           <ArrowBackIcon boxSize={6} color="#fff" />
 
           <Text color="#fff" fontSize="md">
-            Go back
+            {t("common:back")}
           </Text>
         </HStack>
       )}
