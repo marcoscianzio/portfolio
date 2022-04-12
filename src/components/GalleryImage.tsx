@@ -34,7 +34,7 @@ const GalleryImage = ({ caption, image, alt }: GalleryImage) => {
       <Modal size="6xl" onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent h="90vh" rounded="lg">
-          <Image rounded="lg" objectFit="cover" w="full" h="full" src={image} />
+          <ChakraNextImage h="full" src={image} alt={alt} />
         </ModalContent>
       </Modal>
     </>
