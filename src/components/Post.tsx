@@ -19,7 +19,7 @@ const Post: React.FC<Metadata> = ({ slug, title, cover, date, type }) => {
         cursor="pointer"
         spacing={6}
       >
-        <ChakraNextImage pointerEvents="none" rounded="lg" h="96" src={cover} />
+        <ChakraNextImage pointerEvents="none" alt={title} rounded="lg" h="96" src={cover} />
         <Stack>
           <Text fontSize="2xl" color="#fff">
             {title}
