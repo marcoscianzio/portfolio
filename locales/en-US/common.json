@@ -2,5 +2,6 @@
   "projects": "Projects",
   "home": "Inicio",
   "previous": "Back",
-  "next": "Next"
+  "next": "Next",
+  "back": "Go back"
 }

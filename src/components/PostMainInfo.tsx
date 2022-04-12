@@ -31,7 +31,7 @@ const PostMainInfo = ({ metadata }: PostMainInfoProps) => {
           <ArrowBackIcon boxSize={6} color="#fff" />
 
           <Text color="#fff" fontSize="md">
-            {t("common:previous")}
+            {t("common:back")}
           </Text>
         </HStack>
       )}
