@@ -1,12 +1,16 @@
 import Favicon from "@components/Favicon";
+import OGMeta from "@components/OGMeta";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
     <Html>
       <Head />
+
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <Favicon />
 
       <meta name="application-name" content="Marcos Cianzio" />
 
@@ -28,7 +32,7 @@ export default function Document() {
 
       <link rel="me" href="mailto:marcoscianziogamero@gmail.com"></link>
 
-      <Favicon />
+      <OGMeta />
 
       <body>
         <Main />
