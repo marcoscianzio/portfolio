@@ -7,6 +7,7 @@ import {
   Icon,
   IconButton,
   Stack,
+  useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
@@ -17,10 +18,12 @@ import ResponsiveNavItem from "./ResponsiveNavItem";
 
 const ResponsiveNavbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const mobile = useBreakpointValue({ base: true, md: false });
 
   return (
     <>
       <IconButton
+        hidden={!mobile}
         position="absolute"
         top={10}
         left={4}
