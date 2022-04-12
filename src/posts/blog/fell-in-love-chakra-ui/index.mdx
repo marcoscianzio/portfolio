@@ -1,0 +1,62 @@
+---
+title: "I fell in love with Chakra UI"
+date: "Apr 04, 2022"
+cover: "https://chakra-ui.com/twitter-og-image.png"
+selected: true
+---
+
+Once i tried `Chakra`, i couldn't go back. Perhaps the reason behind this preference relays on the fact i'm a bit lazy when it comes to stylizing components, especially when making design systems. However, there is a huge truth: `Chakra UI` is amazing.
+
+Probable similarly to other developers, i felt myself very comfortable just using css at the very beginning, without recurring to any framework or library.
+
+Eventually, i gave `Bootstrap` a try. That experience highlighted the no need to create a bunch of .css files, and for those less imaginative, thinking about class names.
+
+However, there was a huge problem. Everything looked so generic. Therefore, i went back to plain CSS as Styled Components really didn't caught my attention.
+
+Unforeseen, while i was watching a video on Youtube, i discovered Chakra. The idea of styling a component by simply passing props to it amazed me.
+
+```jsx
+import { Box } from "@chakra-ui/react";
+
+<Box bg="red.400" py={12} px={4} borderWidth={1} borderColor="green.400" />;
+```
+
+This, as you can expect, improved my speed on styling components. In fact, it changed my mood, i was frankly way more excited to start new projects.
+
+## Yeah that's great, but how i'm supposed to make a hover?
+
+That's one of the questions that came into my main as i was learning Chakra. Fortunately, it couldn't be more simpler.
+
+So, let's just imagine we want to change the height of a box on hover.
+
+```jsx
+import { Box } from "@chakra-ui/react";
+
+<Box
+  h={12}
+  transition="all 0.2s"
+  _hover={{
+    h: 96,
+  }}
+/>;
+```
+
+As you can appreciate, it's only neccesary to pass an object to `_hover` with the new styles.
+
+Okay, that's looks great. But let's see another case. We want to make a children box increase its padding when hovering it's parent element. This could be done by using `_groupHover`
+
+```jsx
+import { Box, Text } from "@chakra-ui/react";
+
+<Box
+  _groupHover={{
+    p: 4,
+  }}
+  transition="all 0.2s"
+  p={8}
+>
+  <Box>
+    <Text>Hello World!</Text>
+  </Box>
+</Box>;
+```
