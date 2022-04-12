@@ -11,7 +11,7 @@ const OGMeta = () => {
 
   const image = "/me.jpg";
 
-  const url = "https://portfolio-marcoscianzio.vercel.app/";
+  const url = "https://marcoscianzio.com/";
 
   const domain = "portfolio-marcoscianzio.vercel.app";
 
