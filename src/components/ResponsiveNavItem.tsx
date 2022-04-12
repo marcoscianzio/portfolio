@@ -41,7 +41,13 @@ const ResponsiveNavItem: React.FC<ResponsiveNavItem> = ({
 
         if (isExternal) {
           return (
-            <ChakraLink aria-label={label} key={i} href={href} target={target}>
+            <ChakraLink
+              rel="noopener noreferrer"
+              aria-label={t(label)}
+              key={i}
+              href={href}
+              target={target}
+            >
               {item}
             </ChakraLink>
           );

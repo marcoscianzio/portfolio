@@ -23,9 +23,9 @@ const Navbar = () => {
       borderWidth={1}
       borderColor="#ffffff0f"
     >
-      {navItems.map(({ icon, href, isExternal }, i) => {
+      {navItems.map(({ icon, href, label, isExternal }, i) => {
         return (
-          <NavItem key={i} icon={icon} isExternal={isExternal} href={href} />
+          <NavItem key={i} label={label} icon={icon} isExternal={isExternal} href={href} />
         );
       })}
       <LocaleList />
