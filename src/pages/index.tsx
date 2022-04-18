@@ -32,24 +32,28 @@ const Home: NextPage<IndexPage> = ({
             {t("index:also")}
           </Text>
         </Stack>
-        <Stack pb={6} overflowX="auto" spacing={6}>
+        <Stack spacing={6}>
           <Heading color="#fff" fontSize="4xl">
             {t("index:selectedWork")}
           </Heading>
-          <HStack mx="-25px !important" alignItems="start" spacing={6}>
-            {selectedProjectPosts.map(({ cover, type, date, title, slug }) => {
-              return (
-                <Post
-                  key={slug}
-                  type={type}
-                  cover={cover}
-                  date={date}
-                  title={title}
-                  slug={slug}
-                />
-              );
-            })}
-          </HStack>
+          <Stack pb={6} overflowX="auto" px="25px" mx="-25px !important">
+            <HStack mx="-25px !important" alignItems="start" spacing={6}>
+              {selectedProjectPosts.map(
+                ({ cover, type, date, title, slug }) => {
+                  return (
+                    <Post
+                      key={slug}
+                      type={type}
+                      cover={cover}
+                      date={date}
+                      title={title}
+                      slug={slug}
+                    />
+                  );
+                }
+              )}
+            </HStack>
+          </Stack>
         </Stack>
         <Stack spacing={8}>
           <Heading color="#fff" fontSize="4xl">
