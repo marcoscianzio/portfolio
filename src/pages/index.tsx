@@ -22,7 +22,7 @@ const Home: NextPage<IndexPage> = ({
 
       <Stack pb={16} spacing={20}>
         <Stack spacing={4}>
-          <Heading color="#fff" fontSize="4xl">
+          <Heading as="h1" color="#fff" fontSize="4xl">
             Marcos Cianzio
           </Heading>
           <Text color="#b7b4c7" fontSize="2xl">
