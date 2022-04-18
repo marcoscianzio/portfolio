@@ -1,10 +1,13 @@
 import { Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
+import { useFormattedDate } from "../hooks/useFormattedDate";
 import { Metadata } from "../types/Metadata";
 import { ChakraNextImage } from "./CharkaNextImage";
 
 const Post: React.FC<Metadata> = ({ slug, title, cover, date, type }) => {
+  const { formattedDate } = useFormattedDate(date);
+
   return (
     <Link href={`/${type}/${slug}`}>
       <Stack
@@ -19,13 +22,19 @@ const Post: React.FC<Metadata> = ({ slug, title, cover, date, type }) => {
         cursor="pointer"
         spacing={6}
       >
-        <ChakraNextImage pointerEvents="none" alt={title} rounded="lg" h="96" src={cover} />
+        <ChakraNextImage
+          pointerEvents="none"
+          alt={title}
+          rounded="lg"
+          h="96"
+          src={cover}
+        />
         <Stack>
           <Text fontSize="2xl" color="#fff">
             {title}
           </Text>
-          <Text color="#b7b4c7" fontSize="2xl">
-            {date}
+          <Text textTransform="capitalize" color="#b7b4c7" fontSize="2xl">
+            {formattedDate}
           </Text>
         </Stack>
       </Stack>

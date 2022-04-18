@@ -7,6 +7,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { useFormattedDate } from "src/hooks/useFormattedDate";
 
 interface DateProps {
   date: string;
@@ -21,6 +22,8 @@ interface DateProps {
 }
 
 const Date = ({ date, workWith, role }: DateProps) => {
+  const { formattedDate } = useFormattedDate(date);
+
   return (
     <Stack spacing={4}>
       <Stack
@@ -49,8 +52,8 @@ const Date = ({ date, workWith, role }: DateProps) => {
                   : `& ${workWith[0].name}`
                 : null}
             </Text>
-            <Text fontSize="xl" color="#b7b4c7">
-              {date}
+            <Text textTransform="capitalize" fontSize="xl" color="#b7b4c7">
+              {formattedDate}
             </Text>
           </Stack>
         </Stack>
