@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { Metadata } from "../types/Metadata";
 import Fuse from "fuse.js";
+import { useRouter } from "next/router";
 
 export const useSearch = (posts: Metadata[]) => {
   const [search, setSearch] = useState("");
+  const router = useRouter();
+
   const [filteredPosts, setFilteredPosts] = useState(posts);
 
   useEffect(() => {
@@ -18,7 +21,7 @@ export const useSearch = (posts: Metadata[]) => {
     } else {
       setFilteredPosts(posts);
     }
-  }, [search]);
+  }, [search, router.locale]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
