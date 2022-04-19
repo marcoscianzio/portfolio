@@ -1,0 +1,120 @@
+---
+title: "Apollo Studio Cookies"
+date: "2022-04-19"
+description: "Como incluir cookies al momento de trabajar con Apollo Studio"
+cover: "https://user-images.githubusercontent.com/73872769/163912560-4bc0e39e-5e70-4bfc-b85f-8dda53eb86d0.jpg"
+selected: true
+---
+
+Durante el desarrollo de LendLab me enfrenté durante días a un error de cookies mientras intentaba implementar la autenticación de usuarios.
+
+A simple vista no había nada incorrecto en el código fuente ni en la configuración de Apollo Studio. El Cors estaba correctamente implementado, incluyendo la URL de studio.apollographql.
+
+```ts
+const main = async () => {
+  const app = express();
+
+  const RedisStore = connectRedis(session);
+  const client = new Redis();
+
+  app.use(
+    cors({
+      credentials: true,
+      origin: ["https://studio.apollographql.com", "http://localhost:3000"],
+    })
+  );
+
+  app.use(
+    session({
+      name: "qid",
+      store: new RedisStore({ client, disableTouch: true }),
+      cookie: {
+        httpOnly: true,
+        maxAge: 100 * 60 * 60 * 24 * 1000,
+      },
+      saveUninitialized: false,
+      secret: "oiteroietrioweuiowqhwqhsdhjksndfnsd",
+      resave: false,
+    })
+  );
+
+  const apolloServer = new ApolloServer({
+    schema: await buildSchema({
+      validate: false,
+      resolvers: [__dirname + "/resolver/**/*.js"],
+    }),
+    context: ({ req, res }): Context => ({ req, res }),
+  });
+
+  await apolloServer.start();
+
+  apolloServer.applyMiddleware({
+    app,
+    path: "/",
+    cors: false,
+  });
+
+  app.listen(4000, () => {
+    console.log("listening on port " + 4000);
+  });
+};
+
+main();
+```
+
+Intentando resolver esta problemática decidí migrar el proyecto a la versión 2 de Apollo Server, la cuál contaba con GraphQL Playground en lugar del Apollo Sandbox/Studio introducido en la siguiente. Active las cookies en la configuración, y mágicamente, sin cambiar una sola linea de código, la autenticación funcionaba. Por lo tanto, concluí que el error radicaba en el Apollo Studio, pero me negaba a dejar de utilizarlo ya que la UI & UX era francamente superior en todos los sentidos.
+
+Afortunadamente, tras días de busqueda en todo tipo de foros, pude llegar a una solución y hoy quiero compartirla con ustedes.
+
+## Antes que nada
+
+Primero que nada, se debe incluir las cookies en la configuración de Apollo Studio, ya que **por defecto se encuentran desactivadas**
+
+<GalleryImage
+  alt="apollo include cookies"
+  image="https://user-images.githubusercontent.com/73872769/163904944-adbfcba5-8c02-4ebb-a2f3-d9de799c46a9.png"
+  caption="Activar las cookies"
+/>
+
+En el mismo lugar, nos establece que la cookie debe contener
+
+- SameSite "None"
+- Secure
+
+Así que lo añadiremos al código.
+
+```typescript
+app.use(
+  session({
+    name: "qid",
+    store: new RedisStore({ client, disableTouch: true }),
+    cookie: {
+      httpOnly: true,
+      // highlight-start
+      sameSite: "none",
+      secure: true,
+      // highlight-end
+      maxAge: 100 * 60 * 60 * 24 * 1000,
+    },
+    saveUninitialized: false,
+    secret: "oiteroietrioweuiowqhwqhsdhjksndfnsd",
+    resave: false,
+  })
+);
+```
+
+## Ok, ¿y ahora?
+
+Ya casi terminamos. En la configuración que abrimos previamente en Apollo Studio añadiremos un nuevo `default header`.
+
+<GalleryImage
+  alt="x-forwarded-proto default header"
+  image="https://user-images.githubusercontent.com/73872769/163911314-ace91d59-dc69-410e-9ab1-faae7d301de7.png"
+  caption="x-forwarded-proto en los default headers"
+/>
+
+Por último, solo queda agregar la siguiente linea de código en el comienzo del mismo.
+
+```typescript
+app.set("trust proxy", true);
+```
