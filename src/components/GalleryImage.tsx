@@ -19,12 +19,15 @@ const GalleryImage = ({ caption, image, alt }: GalleryImage) => {
           cursor="zoom-in"
           onClick={onOpen}
           h="500px"
+          bg="#282a36"
+          rounded="lg"
+          objectFit="contain"
           src={image}
           alt={alt}
         />
 
         {caption && (
-          <Text as="em" mt="-30px" color="#b7b4c7" fontSize="large">
+          <Text as="em" mt="-30px" color="#b7b4c7" fontSize="lg">
             {caption}
           </Text>
         )}
@@ -33,7 +36,7 @@ const GalleryImage = ({ caption, image, alt }: GalleryImage) => {
       <Modal size="6xl" onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent h="90vh" rounded="lg">
-          <ChakraNextImage h="full" src={image} alt={alt} />
+          <ChakraNextImage objectFit="contain" h="full" src={image} alt={alt} />
         </ModalContent>
       </Modal>
     </>

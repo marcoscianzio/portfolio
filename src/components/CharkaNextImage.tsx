@@ -58,7 +58,7 @@ export const ChakraNextImage = (props: ImageProps & BoxProps) => {
         quality={quality}
         layout="fill"
         objectPosition="center"
-        objectFit="cover"
+        objectFit={objectFit}
         rounded="lg"
         placeholder="blur"
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
