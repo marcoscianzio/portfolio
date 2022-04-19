@@ -26,6 +26,7 @@ const ProjectPost: NextPage<PostPage> = ({
         <title>{`${metadata.title} - Marcos Cianzio`}</title>
 
         <OGMeta
+          image={metadata.cover}
           slug={`${router.locale}/${slug}`}
           title={`${metadata.title} - Marcos Cianzio`}
           description={metadata.description}

@@ -28,6 +28,7 @@ const BlogPost: NextPage<PostPage> = ({
         <title>{metadata.title}</title>
 
         <OGMeta
+          image={metadata.cover}
           slug={`${router.locale}/${slug}`}
           title={`${metadata.title} - Marcos Cianzio`}
           description={metadata.description}
