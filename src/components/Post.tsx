@@ -30,6 +30,7 @@ const Post: React.FC<Omit<Metadata, "description">> = ({
       >
         <ChakraNextImage
           pointerEvents="none"
+          objectFit="cover"
           alt={title}
           rounded="lg"
           h="96"
