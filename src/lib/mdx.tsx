@@ -3,6 +3,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import { PostPage } from "../types/PostPage";
 import { Metadata } from "../types/Metadata";
 import { getMdxSource } from "../utils/getMdxSource";
+import { orderByNewest } from "src/utils/orderByNewest";
 
 export const getFiles = (type: "blog" | "project") => {
   const { files } = getMdxSource(type);
@@ -27,16 +28,14 @@ export const getFileFromSlug = async (
     ...(data as Metadata),
   };
 
-  const files = getFiles(type);
+  const files = orderByNewest(getFilesMetadata(type, locale));
 
-  const currentIndex = files!.findIndex((file) => file === slug);
+  const currentIndex = files!.findIndex((file) => file.slug === slug);
 
   const { previousFile, nextFile } = getPreviousAndNextFiles(
-    type,
-    currentIndex,
-    locale
+    files,
+    currentIndex
   );
-
 
   const source = await serialize(content, {});
 
@@ -51,56 +50,21 @@ export const getFileFromSlug = async (
 };
 
 export const getPreviousAndNextFiles = (
-  type: "blog" | "project",
-  currentIndex: number,
-  locale: string | undefined
+  files: Metadata[],
+  currentIndex: number
 ) => {
-  let nextFile = null;
-  let previousFile = null;
-
-  if (!locale) {
-    return {
-      nextFile,
-      previousFile,
-    };
-  }
-
-  const files = getFiles(type);
-
-  if (!files) {
-    return {
-      nextFile,
-      previousFile,
-    };
-  }
-
   const previousIndex = currentIndex - 1;
   const nextIndex = currentIndex + 1;
 
-  const previousFileSlug = files[previousIndex];
-  const nextFileSlug = files[nextIndex];
+  const previousFile = files[previousIndex] || null;
 
-  if (previousFileSlug) {
-    const previousFileTitle = getFileTitle(type, previousFileSlug, locale);
+  const nextFile = files[nextIndex] || null;
 
-    previousFile = {
-      slug: `/${type}/${previousFileSlug}`,
-      title: previousFileTitle,
-    };
-  }
-
-  if (nextFileSlug) {
-    const nextFileTitle = getFileTitle(type, nextFileSlug, locale);
-
-    nextFile = {
-      slug: `/${type}/${replaceMdxExtension(nextFileSlug)}`,
-      title: nextFileTitle,
-    };
-  }
+  console.log(nextFile, previousFile)
 
   return {
-    nextFile,
     previousFile,
+    nextFile,
   };
 };
 
@@ -148,28 +112,6 @@ export const getSelectedFilesMetadata = (
   return files.filter((file) => {
     return file.selected;
   }) as Metadata[];
-};
-
-export const getFileTitle = (
-  type: "blog" | "project",
-  slug: string,
-  locale: string | undefined
-) => {
-  if (!locale) {
-    return;
-  }
-
-  const { mdxSource } = getMdxSource(type, locale, slug);
-
-  if (!mdxSource) {
-    return;
-  }
-
-  const { data: fileData } = matter(mdxSource);
-
-  const fileTitle = (fileData as Metadata).title;
-
-  return fileTitle;
 };
 
 const replaceMdxExtension = (file: string) => {
