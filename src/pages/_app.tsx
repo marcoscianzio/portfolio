@@ -3,7 +3,8 @@ import type { AppProps } from "next/app";
 import { Background } from "@components/Background";
 import Fonts from "@components/Fonts";
 import { theme } from "../theme/theme";
-import "@fontsource/ibm-plex-sans";
+import "@fontsource/archivo";
+import "@fontsource/manrope";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

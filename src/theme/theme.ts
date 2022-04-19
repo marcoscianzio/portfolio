@@ -8,13 +8,17 @@ const config: ThemeConfig = {
 
 export const theme = extendTheme({
   fonts: {
-    heading: "IBM Plex Sans",
-    body: "IBM Plex Sans",
+    heading: "Manrope",
+    body: `Archivo,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`,
   },
   styles: {
     global: {
       "html, body, #__next": {
         bg: "bg",
+        lineHeight: "base",
+        MozOsxFontSmoothing: "grayscale",
+        WebkitFontSmoothing: "antialiased",
+        textRendering: "optimizeLegibility",
         overflowX: "hidden",
       },
       ".chakra-text, .chakra-heading": {
@@ -30,6 +34,15 @@ export const theme = extendTheme({
       "::-webkit-scrollbar-thumb": {
         rounded: "lg",
         background: "#fff",
+      },
+      ".highlight-line": {
+        backgroundColor: "#f8f8f21f",
+        display: "block",
+        marginRight: "-1em",
+        marginLeft: "-1em",
+        paddingRight: "1em",
+        paddingLeft: "0.75em",
+        borderLeft: "0.3em solid #f8f8f21f",
       },
     },
   },

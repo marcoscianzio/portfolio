@@ -761,10 +761,15 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/ibm-plex-sans@^4.5.7":
-  version "4.5.7"
-  resolved "https://registry.yarnpkg.com/@fontsource/ibm-plex-sans/-/ibm-plex-sans-4.5.7.tgz#472a377ed8c06cbcc7990cde9a6ef1476f8022c0"
-  integrity sha512-doklVOeKIKo3kiP11PrYCBmBXMhc8l/p3MbApSVhS7NmTEsvgBn+L4afCrcfD7pIuVQvC1A42Gtlu4FSBNWm+g==
+"@fontsource/archivo@^4.5.6":
+  version "4.5.6"
+  resolved "https://registry.yarnpkg.com/@fontsource/archivo/-/archivo-4.5.6.tgz#98855f9222c76f9a3e76535c881f4c09cd99a673"
+  integrity sha512-5m+4Bm7bZ3NI9UdCPJ0+hLy0Epm9InqrosF+Uzy3w+P57pSv/Pb86QBSUmYF3dturIU8i7PelHRLxVuYH8ePfw==
+
+"@fontsource/manrope@^4.5.6":
+  version "4.5.6"
+  resolved "https://registry.yarnpkg.com/@fontsource/manrope/-/manrope-4.5.6.tgz#e2174a6a86382053f92a542f5165a4b3c6d66172"
+  integrity sha512-83F87+ir+KaIDzIpAdICHu8CzbkD9DabjXQxO3Q4/86AahbLB5wktjGqx3LpvE2uIWAMyiwhhjo7KcJVGxRyTg==
 
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
