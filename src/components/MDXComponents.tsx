@@ -17,15 +17,15 @@ import SyntaxHighlighter from "./SyntaxHighlighter";
 
 export default {
   h2: (props: HeadingProps) => (
-    <Heading as="h2" pt={10} pb={10} fontSize="4xl" color="#fff" {...props} />
+    <Heading as="h2" pt={10} pb={4} fontSize="4xl" color="#fff" {...props} />
   ),
   h3: (props: HeadingProps) => (
-    <Heading as="h3" pt={4} pb={10} fontSize="2xl" color="#fff" {...props} />
+    <Heading as="h3" pt={4} pb={4} fontSize="2xl" color="#fff" {...props} />
   ),
   p: (props: TextProps) => (
-    <Text as="p" color="#fff" pb={10} fontSize="xl" {...props} />
+    <Text as="p" color="#fff" pb={8} fontSize="xl" {...props} />
   ),
-  ul: (props: ListProps) => <UnorderedList spacing={6} pb={10} {...props} />,
+  ul: (props: ListProps) => <UnorderedList spacing={4} pb={10} {...props} />,
   li: (props: ListItemProps) => (
     <ListItem color="#fff" fontSize="xl" {...props} />
   ),
