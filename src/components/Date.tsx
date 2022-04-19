@@ -36,7 +36,7 @@ const Date = ({ date, workWith, role }: DateProps) => {
           direction={{ md: "row", base: "column" }}
         >
           <AvatarGroup size="md" max={3}>
-            <Avatar name="Marcos Cianzio" />
+            <Avatar name="Marcos Cianzio" src="/me.jpg"/>
             {workWith &&
               workWith.map(({ name, pic }, i) => {
                 return <Avatar key={i} name={name} src={pic} />;
