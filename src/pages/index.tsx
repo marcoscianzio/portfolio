@@ -21,6 +21,7 @@ const Home: NextPage<IndexPage> = ({
         <title>{t("common:home")} - Marcos Cianzio</title>
 
         <OGMeta
+          slug="/"
           title={`${t("common:home")} - Marcos Cianzio`}
           description={t("index:description")}
         />

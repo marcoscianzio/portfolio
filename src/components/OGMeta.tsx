@@ -3,14 +3,14 @@ import React from "react";
 interface OGMeta {
   title: string;
   description: string;
-  slug?: string;
+  slug: string;
   image?: string;
 }
 
 const OGMeta = ({ title, description, slug, image = "/me.jpg" }: OGMeta) => {
   const domain = "marcoscianzio.com";
 
-  const url = "https://marcoscianzio.com/";
+  const url = "https://marcoscianzio.com";
 
   return (
     <>

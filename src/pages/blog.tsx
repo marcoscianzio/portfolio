@@ -26,7 +26,7 @@ const Blog: NextPage<InferGetServerSidePropsType<typeof getStaticProps>> = ({
         <title>Blog - Marcos Cianzio</title>
 
         <OGMeta
-          slug={`${router.locale}/blog`}
+          slug={`/${router.locale}/blog`}
           title="Blog - Marcos Cianzio"
           description={t("blog:description")}
         />

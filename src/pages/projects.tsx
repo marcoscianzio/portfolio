@@ -25,7 +25,7 @@ const Projects: NextPage<
         <title>{t("common:projects")} - Marcos Cianzio</title>
 
         <OGMeta
-          slug={`${router.locale}/projects`}
+          slug={`/${router.locale}/projects`}
           title="Projects - Marcos Cianzio"
           description={t("projects:description")}
         />
