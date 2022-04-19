@@ -5,6 +5,7 @@ export interface Metadata {
   date: string;
   type: string;
   role?: string;
+  description: string;
   workWith?:
     | {
         name?: string;

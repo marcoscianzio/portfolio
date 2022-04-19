@@ -10,17 +10,29 @@ import { getAllFilesIds, getFileFromSlug } from "@lib/mdx";
 import { Params } from "../../types/Params";
 import { PostPage } from "../../types/PostPage";
 import Head from "next/head";
+import OGMeta from "@components/OGMeta";
+import { useRouter } from "next/router";
 
 const BlogPost: NextPage<PostPage> = ({
+  slug,
   source,
   metadata,
   nextFile,
   previousFile,
 }) => {
+  const router = useRouter();
+
   return (
     <Layout>
       <Head>
         <title>{metadata.title}</title>
+
+        <OGMeta
+          slug={`${router.locale}/${slug}`}
+          title={`${metadata.title} - Marcos Cianzio`}
+          description={metadata.description}
+        />
+        <meta name="description" content={metadata.description} />
       </Head>
 
       <PostMainInfo metadata={metadata} />

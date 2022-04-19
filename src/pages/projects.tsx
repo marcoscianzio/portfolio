@@ -1,11 +1,13 @@
 import { Heading, Stack } from "@chakra-ui/react";
 import Layout from "@components/Layout";
+import OGMeta from "@components/OGMeta";
 import Post from "@components/Post";
 import Search from "@components/Search";
 import { getFilesMetadata } from "@lib/mdx";
 import { GetStaticProps, InferGetServerSidePropsType, NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React from "react";
 import { useSearch } from "../hooks/useSearch";
 import { orderByNewest } from "../utils/orderByNewest";
@@ -14,12 +16,20 @@ const Projects: NextPage<
   InferGetServerSidePropsType<typeof getStaticProps>
 > = ({ posts }) => {
   const { filteredPosts, handleSearch } = useSearch(posts);
+  const router = useRouter();
   let { t } = useTranslation();
 
   return (
     <Layout>
       <Head>
         <title>{t("common:projects")} - Marcos Cianzio</title>
+
+        <OGMeta
+          slug={`${router.locale}/projects`}
+          title="Projects - Marcos Cianzio"
+          description={t("projects:description")}
+        />
+        <meta name="description" content={t("projects:description")} />
       </Head>
 
       <Stack pb={10} spacing={8}>

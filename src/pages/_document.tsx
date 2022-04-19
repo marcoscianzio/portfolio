@@ -1,5 +1,4 @@
 import Favicon from "@components/Favicon";
-import OGMeta from "@components/OGMeta";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -12,27 +11,17 @@ export default function Document() {
 
       <Favicon />
 
-      <meta name="application-name" content="Marcos Cianzio" />
-
       <meta
-        name="description"
-        lang="en"
-        content="Marcos Cianzio's portfolio. This is a collection of my work and
-        projects, as a web developer based in Uruguay. You can also see my blog
-        posts about programming and technology. Access to my all my social media
-        such as Github and Linkedin! Furthermore, you are able to contact me by
-        email"
+        name="keywords"
+        content="marcos, cianzio, marcos cianzio, blog, developer, desarrollador, desarrollador web, web developer, full-stack dev, dev, desarrollador full-stack, full-stack, uruguay, portfolio, ciancio, siansio, proyectos, programador, github, linkedin"
       />
 
       <meta
-        name="description"
-        lang="es"
-        content="El portfolio de Marcos Cianzio. Esta es una colección de mi trabajo y proyectos como desarrollador web en Uruguay. También puedes ver las publicaciones de mi blog sobre programación y tecnología. ¡Accede a mis redes sociales como Github y Linkedin! Puedes ponerte en contacto conmigo por cualquier consulta duda por email."
+        name="application-name"
+        content="Marcos Cianzio - Full Stack Web Developer"
       />
 
       <link rel="me" href="mailto:marcoscianziogamero@gmail.com"></link>
-
-      <OGMeta />
 
       <body>
         <Main />

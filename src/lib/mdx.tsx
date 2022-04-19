@@ -37,6 +37,7 @@ export const getFileFromSlug = async (
     locale
   );
 
+
   const source = await serialize(content, {});
 
   return {
@@ -126,10 +127,7 @@ export const getFilesMetadata = (
 
     const { data } = matter(mdxSource);
 
-    return [
-      { ...data, slug: replaceMdxExtension(fileSlug), type },
-      ...allFiles,
-    ] as Metadata[];
+    return [{ ...data, slug: fileSlug, type }, ...allFiles] as Metadata[];
   }, []);
 };
 

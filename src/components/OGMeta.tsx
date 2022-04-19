@@ -1,37 +1,30 @@
 import React from "react";
 
-const OGMeta = () => {
-  const titleEn = "Marcos Cianzio - Full Stack Web Developer";
-  const titleEs = "Marcos Cianzio - Full Stack Web Developer";
+interface OGMeta {
+  title: string;
+  description: string;
+  slug?: string;
+}
 
-  const descriptionEn =
-    "My portfolio. I'm a full stack web developer based in Uruguay. I'm passionate about building web applications and solving problems.";
-  const descriptionEs =
-    "Mi portfolio. Soy un desarrollador web full-stck de Uruguay. Me encanta construir aplicaciones web y resolver problemas.";
-
+const OGMeta = ({ title, description, slug }: OGMeta) => {
   const image = "/me.jpg";
-
+  const domain = "marcoscianzio.com";
+  
   const url = "https://marcoscianzio.com/";
-
-  const domain = "portfolio-marcoscianzio.vercel.app";
 
   return (
     <>
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={`${url}${slug}`} />
       <meta property="og:type" content="website" />
-      <meta property="og:title" lang="en" content={titleEn} />
-      <meta property="og:title" lang="es" content={titleEs} />
-      <meta property="og:description" lang="en" content={descriptionEn} />
-      <meta property="og:description" lang="es" content={descriptionEs} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:domain" content={domain} />
-      <meta property="twitter:url" content={url} />
-      <meta name="twitter:title" lang="en" content={titleEn} />
-      <meta name="twitter:title" lang="es" content={titleEs} />
-      <meta name="twitter:description" lang="es" content={descriptionEs} />
-      <meta name="twitter:description" lang="en" content={descriptionEn} />
+      <meta property="twitter:url" content={`${url}${slug}`} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
     </>
   );

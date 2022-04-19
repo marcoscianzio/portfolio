@@ -1,24 +1,36 @@
 import Layout from "@components/Layout";
+import OGMeta from "@components/OGMeta";
 import PostMainInfo from "@components/PostMainInfo";
 import PreviousAndNextButtons from "@components/PreviousAndNextButtons";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import MDXComponents from "../../components/MDXComponents";
 import { getAllFilesIds, getFileFromSlug } from "../../lib/mdx";
 import { Params } from "../../types/Params";
 import { PostPage } from "../../types/PostPage";
 
 const ProjectPost: NextPage<PostPage> = ({
+  slug,
   source,
   metadata,
   nextFile,
   previousFile,
 }) => {
+  const router = useRouter();
+
   return (
     <Layout>
       <Head>
-        <title>{metadata.title}</title>
+        <title>{`${metadata.title} - Marcos Cianzio`}</title>
+
+        <OGMeta
+          slug={`${router.locale}/${slug}`}
+          title={`${metadata.title} - Marcos Cianzio`}
+          description={metadata.description}
+        />
+        <meta name="description" content={metadata.description} />
       </Head>
 
       <PostMainInfo metadata={metadata} />

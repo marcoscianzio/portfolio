@@ -5,7 +5,13 @@ import { useFormattedDate } from "../hooks/useFormattedDate";
 import { Metadata } from "../types/Metadata";
 import { ChakraNextImage } from "./CharkaNextImage";
 
-const Post: React.FC<Metadata> = ({ slug, title, cover, date, type }) => {
+const Post: React.FC<Omit<Metadata, "description">> = ({
+  slug,
+  title,
+  cover,
+  date,
+  type,
+}) => {
   const { formattedDate } = useFormattedDate(date);
 
   return (

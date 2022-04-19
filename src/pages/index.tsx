@@ -1,5 +1,6 @@
 import { Heading, HStack, Stack, Text } from "@chakra-ui/react";
 import Layout from "@components/Layout";
+import OGMeta from "@components/OGMeta";
 import Post from "@components/Post";
 import { getSelectedFilesMetadata } from "@lib/mdx";
 import type { GetStaticProps, NextPage } from "next";
@@ -18,6 +19,12 @@ const Home: NextPage<IndexPage> = ({
     <Layout>
       <Head>
         <title>{t("common:home")} - Marcos Cianzio</title>
+
+        <OGMeta
+          title={`${t("common:home")} - Marcos Cianzio`}
+          description={t("index:description")}
+        />
+        <meta name="description" content={t("index:description")} />
       </Head>
 
       <Stack pb={16} spacing={20}>

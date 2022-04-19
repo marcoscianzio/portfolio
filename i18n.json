@@ -3,6 +3,8 @@
   "defaultLocale": "en-US",
   "pages": {
     "*": ["search", "common"],
-    "/": ["index", "common"]
+    "/": ["index", "common"],
+    "/blog": ["blog"],
+    "/projects": ["projects"]
   }
 }
