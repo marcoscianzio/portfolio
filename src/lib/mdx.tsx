@@ -60,8 +60,6 @@ export const getPreviousAndNextFiles = (
 
   const nextFile = files[nextIndex] || null;
 
-  console.log(nextFile, previousFile)
-
   return {
     previousFile,
     nextFile,
@@ -112,10 +110,6 @@ export const getSelectedFilesMetadata = (
   return files.filter((file) => {
     return file.selected;
   }) as Metadata[];
-};
-
-const replaceMdxExtension = (file: string) => {
-  return file.replace(".mdx", "");
 };
 
 export const getAllFilesIds = (locales: string[], type: string) => {
