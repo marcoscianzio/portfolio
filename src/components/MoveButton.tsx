@@ -19,6 +19,12 @@ interface MoveButtonProps {
 const MoveButton = ({ type, file, oppositeFile }: MoveButtonProps) => {
   let { t } = useTranslation();
 
+  let align = "flex-start";
+
+  if (type === "previous" && oppositeFile) {
+    align = "flex-end";
+  }
+
   return (
     <Link href={file.slug}>
       <HStack
@@ -38,9 +44,9 @@ const MoveButton = ({ type, file, oppositeFile }: MoveButtonProps) => {
         borderColor="#ffffff0f"
       >
         {type === "previous" && <ArrowBackIcon boxSize={6} color="#fff" />}
-        <Stack>
+        <Stack align={align}>
           <Text color="#b7b4c7" fontSize="md" textTransform="capitalize">
-          {t(`common:${type}`)}
+            {t(`common:${type}`)}
           </Text>
           <Heading as="h3" fontSize="2xl" color="#fff">
             {file.title}
