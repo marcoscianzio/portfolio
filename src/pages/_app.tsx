@@ -5,6 +5,7 @@ import Fonts from "@components/Fonts";
 import { theme } from "../theme/theme";
 import "@fontsource/archivo";
 import "@fontsource/manrope";
+import "@fontsource/fira-code";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

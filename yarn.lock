@@ -766,6 +766,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/archivo/-/archivo-4.5.6.tgz#98855f9222c76f9a3e76535c881f4c09cd99a673"
   integrity sha512-5m+4Bm7bZ3NI9UdCPJ0+hLy0Epm9InqrosF+Uzy3w+P57pSv/Pb86QBSUmYF3dturIU8i7PelHRLxVuYH8ePfw==
 
+"@fontsource/fira-code@^4.5.12":
+  version "4.5.12"
+  resolved "https://registry.yarnpkg.com/@fontsource/fira-code/-/fira-code-4.5.12.tgz#110922227c6a9fe53f4dc262788f773663d8683d"
+  integrity sha512-dAVGsgiVR6jslpuXosHH4/Jf8bsAIKL1RWqjVq4WpmxL7CFHfg9hT5bAv/Y3xsEj8kDTibEgpuC3eMfr9kb02g==
+
 "@fontsource/manrope@^4.5.6":
   version "4.5.6"
   resolved "https://registry.yarnpkg.com/@fontsource/manrope/-/manrope-4.5.6.tgz#e2174a6a86382053f92a542f5165a4b3c6d66172"

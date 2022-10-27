@@ -18,7 +18,7 @@ const SyntaxHighlighter = ({ children }: any) => {
         <Box
           mb={10}
           rounded="lg"
-          fontFamily="Cascadia Code"
+          fontFamily="Fira Code"
           borderWidth={1}
           fontSize="xl"
           borderColor="#ffffff0f"
