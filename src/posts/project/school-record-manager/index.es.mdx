@@ -1,0 +1,99 @@
+---
+title: "Gestor de constancias"
+date: "2022-10-20"
+description: "Aplicación de escritorio para administrar las constancias de una universidad. Permite también el control de alumnos, eventos, y la asistencia a los mismos."
+cover: "https://user-images.githubusercontent.com/73872769/222444932-c4407bf1-cc84-4299-8d6a-6ab067c40ad5.png"
+role: "Cliente, Servidor y Documentación"
+workWith: [{ name: "Facundo Suarez, Rodrigo Caraballo" }]
+selected: true
+---
+
+En el siglo 21, la tecnología es una parte integral de nuestra vida diaria. Sin embargo, muchas tareas todavía se realizan manualmente, en especial las administrativas. Esto es particularmente cierto para las universidades que deben gestionar una gran cantidad de constancias, cada una con sus datos individuales. Estos datos deben ser ingresados ​​por el personal administrativo para ser almacenados en formularios de papel y luego ser enviados a los estudiantes. Este procedimiento, aunque clásico, suele generar costes de gestión considerables, pérdidas de tiempo para quienes quieren recibir sus documentos rápidamente y es proclive a errores humanos. Parecería que existe la necesidad de una herramienta de automatización que asegure una administración eficiente. Por lo tanto, el objetivo de este proyecto es crear una aplicación de escritorio para resolver este problema, impulsado por el reciente interés de la Universidad Tecnológica de Uruguay. Se recopilaron los requerimientos de varias secretarías para crear un sistema que satisficiera sus necesidades. Hay una amplia gama de expectativas para este proyecto, pero el núcleo sigue siendo el mismo: dejar atrás el trabajo a mano por el click.
+
+El producto a ser desarrollado fue denominado “Gestor de Solicitudes de Constancias - GSC” 
+GSC administra la solicitud, emisión y registro de constancias y reclamos, ordenando así la gestión de las mismas en la carrera LTI de los ITR de UTEC. Dichas constancias son: Constancia de Presencial (Presencial común, presencial prueba), Constancia de transporte, Constancia de Estudiante activo, Constancia de exámenes y Constancia de créditos (VME, UTEC innova, optativas)
+El sistema cuenta con tres perfiles de usuarios: analista, docente, y estudiante. También, es importante señalar que este sistema tiene como objetivo ser utilizado para que los estudiantes logren solicitar diferentes tipos de constancias y las analistas de la carrera se las emitan a través del mismo, a su vez registrando los diferentes eventos que determinarán la validez de la misma.
+Adicionalmente, el sistema brinda un dashboard con información sobre los diferentes eventos, incluyendo las personas registradas en los mismos y notificaciones sobre las diferentes solicitudes. 
+
+Para el desarrollo del sistema fue seleccionada una combinación de tecnologías vistas en la carrera. En el área de programación, el modelo de arquitectura está basado en un modelo Cliente – Servidor, utilizando EJB’S Y JPA. Se implementará una Interfaz Swing comunicándose con los EJB remotos que contienen la lógica, que a la vez se comunican con los DAO para el acceso a los datos. En cuanto a Base de Datos, se trabajará con Oracle XE.
+
+## Tecnologías
+
+- Java
+- Java EE
+
+### Cliente
+
+- Java Swing
+
+### Servidor
+
+- JPA
+- Wildfly 26
+- Hibernate
+
+### Base de datos
+
+- Oracle
+
+## Galería
+
+### Menú del usuario analista
+
+<GalleryImage
+  alt="solicitudes constancia"
+  image="https://user-images.githubusercontent.com/73872769/222457459-f8bd5643-2b7a-41e1-b708-d78bec533b33.png"
+  caption="Gestión de las solicitudes de constancia de los alumnos"
+/>
+
+<GalleryImage
+  alt="eventos analista"
+  image="https://user-images.githubusercontent.com/73872769/222455796-23be128b-509e-4f13-9e14-213809a6d25f.png"
+  caption="Gestión de los eventos de la universidad"
+/>
+
+<GalleryImage
+  alt="convocatorias eventos analista"
+  image="https://user-images.githubusercontent.com/73872769/222456079-165f86b0-6ec0-424d-946b-88e5cc474db4.png"
+  caption="Gestión de convocatorias a eventos"
+/>
+
+<GalleryImage
+  alt="reportes reclamos por mes"
+  image="https://user-images.githubusercontent.com/73872769/222456422-97ad8680-ea77-41c8-bd7a-0e43e54351d5.png"
+  caption="Generación de reportes de reclamos por mes"
+/>
+
+### Menú del usuario estudiante
+
+<GalleryImage
+  alt="solicitudes constancia del estudiante"
+  image="https://user-images.githubusercontent.com/73872769/222458025-89766539-7069-494c-b8bf-7cf0b282056e.png"
+  caption="Panel de solicitudes de constancia del estudiante"
+/>
+
+<GalleryImage
+  alt="nueva solicitud"
+  image="https://user-images.githubusercontent.com/73872769/222458258-1d179cab-e525-4d08-ba0a-2d34497739f7.png"
+  caption="Nueva solicitud de constancia"
+/>
+
+<GalleryImage
+  alt="ficha solicitud de constancia"
+  image="https://user-images.githubusercontent.com/73872769/222459245-63903c01-7c70-400b-ba54-8dee81516f51.png"
+  caption="Ficha de una solicitud de constancia"
+/>
+
+### Menú del usuario tutor
+
+<GalleryImage
+  alt="listado eventos tutor"
+  image="https://user-images.githubusercontent.com/73872769/222460344-f273dfc1-8f8c-4fb7-8124-faf2da623d03.png"
+  caption="Listado de eventos"
+/>
+
+<GalleryImage
+  alt="convocatoria eventos tutor"
+  image="https://user-images.githubusercontent.com/73872769/222460108-3d3ec17e-7847-42e2-97de-a1bd2944e751.png"
+  caption="Gestión de convocatoria a eventos"
+/>
