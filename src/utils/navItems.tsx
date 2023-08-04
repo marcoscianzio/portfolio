@@ -1,6 +1,6 @@
 import {
-  FiClipboard,
-  FiEdit2,
+  FiFileText,
+  FiFolder,
   FiGithub,
   FiHome,
   FiLinkedin,
@@ -17,12 +17,13 @@ export const navItems = [
   {
     label: "Blog",
     href: "/blog",
-    icon: FiEdit2,
+    icon: FiFileText,
   },
   {
     label: "common:projects",
     href: "/projects",
-    icon: FiClipboard,
+    icon: FiFolder,
+    divider: true
   },
   {
     label: "Email",
@@ -41,6 +42,7 @@ export const navItems = [
     isExternal: true,
     href: "https://linkedin.com/in/marcos-cianzio",
     icon: FiLinkedin,
+    divider: true
   },
 ] as NavItem[];
 
@@ -56,12 +58,12 @@ export const responsiveNavItems = [
       {
         label: "Blog",
         href: "/blog",
-        icon: FiEdit2,
+        icon: FiFileText,
       },
       {
         label: "common:projects",
         href: "/projects",
-        icon: FiClipboard,
+        icon: FiFolder,
       },
     ],
   },
