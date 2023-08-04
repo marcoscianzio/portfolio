@@ -42,7 +42,6 @@ const PostMainInfo = ({ metadata }: PostMainInfoProps) => {
         </Heading>
         <Date
           role={metadata.role}
-          workWith={metadata.workWith}
           date={metadata.date}
         />
       </Stack>
