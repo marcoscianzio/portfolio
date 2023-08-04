@@ -1,7 +1,7 @@
 {
-  "description": "Desarrollador web full-stack de Uruguay.  Interesado en construir aplicaciones web con React, especialmente con Next.js, estilizandolas con ChakraUI.",
+  "description": "Soy un desarrollador web Full-Stack uruguayo, especializado en la construcción de aplicaciones web robustas y eficientes. Mis herramientas favoritas son React, en particular Next.js para la capa de frontend, y ChakraUI para darles un toque estético y funcional.",
 
-  "also": "También disfruto mucho modelando base de datos relacionales y creando api's con GraphQL y Prisma.",
+  "also": "En el backend, me apasiona diseñar y modelar bases de datos relacionales, así como crear potentes APIs utilizando GraphQL y Prisma. Mi objetivo es crear soluciones web que sean tanto elegantes como eficaces.",
 
   "selectedWork": "Trabajo destacado"
 }
