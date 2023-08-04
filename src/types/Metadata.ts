@@ -6,12 +6,5 @@ export interface Metadata {
   type: string;
   role?: string;
   description: string;
-  workWith?:
-    | {
-        name?: string;
-        pic?: string;
-      }[]
-    | undefined
-    | null;
   selected?: boolean;
 }

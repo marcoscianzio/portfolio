@@ -11,17 +11,10 @@ import { useFormattedDate } from "src/hooks/useFormattedDate";
 
 interface DateProps {
   date: string;
-  workWith:
-    | {
-        name?: string;
-        pic?: string;
-      }[]
-    | undefined
-    | null;
   role?: string | null | undefined;
 }
 
-const Date = ({ date, workWith, role }: DateProps) => {
+const Date = ({ date, role }: DateProps) => {
   const { formattedDate } = useFormattedDate(date);
 
   return (
@@ -37,20 +30,11 @@ const Date = ({ date, workWith, role }: DateProps) => {
         >
           <AvatarGroup size="md" max={3}>
             <Avatar name="Marcos Cianzio" src="/me.jpg"/>
-            {workWith &&
-              workWith.map(({ name, pic }, i) => {
-                return <Avatar key={i} name={name} src={pic} />;
-              })}
           </AvatarGroup>
 
           <Stack spacing={-1}>
             <Text color="white" fontSize="xl">
               Marcos Cianzio{" "}
-              {workWith && Boolean(workWith.length)
-                ? workWith.length > 1
-                  ? "and others"
-                  : `& ${workWith[0].name}`
-                : null}
             </Text>
             <Text textTransform="capitalize" fontSize="xl" color="#b7b4c7">
               {formattedDate}
