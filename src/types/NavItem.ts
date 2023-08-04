@@ -5,6 +5,7 @@ export interface NavItem {
   href: string;
   icon: IconType;
   label: string;
+  divider?: boolean;
 }
 
 export interface ResponsiveNavItem {
