@@ -6,9 +6,9 @@ cover: "https://user-images.githubusercontent.com/73872769/163912560-4bc0e39e-5e
 selected: true
 ---
 
-Durante el desarrollo de LendLab me enfrenté durante días a un error de cookies mientras intentaba implementar la autenticación de usuarios.
+Durante la construcción de LendLab, me encontré luchando durante días con un obstinado error de cookies mientras intentaba poner en marcha la autenticación de usuarios.
 
-A simple vista no había nada incorrecto en el código fuente ni en la configuración de Apollo Studio. El Cors estaba correctamente implementado, incluyendo la URL de studio.apollographql.
+A simple vista, todo parecía estar en orden tanto en el código fuente como en la configuración de Apollo Studio. El sistema CORS estaba correctamente configurado, incluyendo la dirección URL de studio.apollographql.
 
 ```ts
 const main = async () => {
@@ -62,13 +62,13 @@ const main = async () => {
 main();
 ```
 
-Intentando resolver esta problemática decidí migrar el proyecto a la versión 2 de Apollo Server, la cuál contaba con GraphQL Playground en lugar del Apollo Sandbox/Studio introducido en la siguiente. Active las cookies en la configuración, y mágicamente, sin cambiar una sola linea de código, la autenticación funcionaba. Por lo tanto, concluí que el error radicaba en el Apollo Studio, pero me negaba a dejar de utilizarlo ya que la UI & UX era francamente superior en todos los sentidos.
+Para abordar este dilema, tomé la decisión de migrar el proyecto a la versión 2 de Apollo Server, que ofrece GraphQL Playground en lugar del Apollo Sandbox/Studio que se introduce en la versión posterior. Activé las cookies en la configuración, y como por arte de magia, la autenticación comenzó a funcionar sin necesidad de modificar una sola línea de código. De ahí, deduje que el culpable era Apollo Studio. Sin embargo, no estaba dispuesto a abandonarlo, ya que su interfaz de usuario y experiencia de usuario eran superiores en todos los aspectos.
 
-Afortunadamente, tras días de busqueda en todo tipo de foros, pude llegar a una solución y hoy quiero compartirla con ustedes.
+Afortunadamente, después de días de búsqueda en diversos foros, finalmente encontré una solución que estoy ansioso por compartir con ustedes.
 
-## Antes que nada
+## Primeros pasos
 
-Primero que nada, se debe incluir las cookies en la configuración de Apollo Studio, ya que **por defecto se encuentran desactivadas**
+Para empezar, es esencial habilitar las cookies en la configuración de Apollo Studio, **ya que por defecto, están desactivadas**.
 
 <GalleryImage
   alt="apollo include cookies"
@@ -76,12 +76,12 @@ Primero que nada, se debe incluir las cookies en la configuración de Apollo Stu
   caption="Activar las cookies"
 />
 
-En el mismo lugar, nos establece que la cookie debe contener
+En la misma sección de configuración, se especifica que la cookie debe contener los siguientes atributos:
 
 - SameSite "None"
 - Secure
 
-Así que lo añadiremos al código.
+Por tanto, añadiremos estas características a nuestro código.
 
 ```typescript
 app.use(
@@ -103,7 +103,7 @@ app.use(
 );
 ```
 
-## Ok, ¿y ahora?
+## ¿Qué sigue?
 
 Ya casi terminamos. En la configuración que abrimos previamente en Apollo Studio añadiremos un nuevo `default header`.
 
@@ -113,8 +113,10 @@ Ya casi terminamos. En la configuración que abrimos previamente en Apollo Studi
   caption="x-forwarded-proto en los default headers"
 />
 
-Por último, solo queda agregar la siguiente linea de código en el comienzo del mismo.
+Finalmente, sólo nos queda añadir la siguiente línea de código al principio del nuestro.
 
 ```typescript
 app.set("trust proxy", true);
 ```
+
+Así logré resolver un problema que me tuvo en vilo durante días. Espero que esta solución pueda ayudarte si te encuentras en una situación similar. ¡Sigue adelante y feliz codificación!
