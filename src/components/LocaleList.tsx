@@ -21,10 +21,8 @@ const LocaleList = () => {
         _focus={{
           boxShadow: "none",
         }}
-        as={Button}
-        variant="unstyled"
       >
-        <NavItemBox icon={FiFlag}>
+        <NavItemBox label="" icon={FiFlag}>
           <Text color="#fff" textTransform="uppercase">
             {router.locale}
           </Text>

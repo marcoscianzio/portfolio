@@ -6,12 +6,23 @@ import { NavItem } from "../types/NavItem";
 import { isActive } from "../utils/IsActive";
 import NavItemBox from "./NavItemBox";
 
-const NavItem: React.FC<NavItem> = ({ icon, label, href, isExternal }) => {
+const NavItem: React.FC<NavItem> = ({
+  icon,
+  label,
+  href,
+  isExternal,
+}) => {
   const isItemActive = isActive(href);
 
   const { target } = useExternalLink(href);
 
-  const item = <NavItemBox icon={icon} isItemActive={isItemActive} />;
+  const item = (
+    <NavItemBox
+      icon={icon}
+      label={label}
+      isItemActive={isItemActive}
+    />
+  );
 
   if (isExternal) {
     return (
