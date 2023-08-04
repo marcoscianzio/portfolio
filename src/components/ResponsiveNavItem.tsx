@@ -31,7 +31,17 @@ const ResponsiveNavItem: React.FC<ResponsiveNavItem> = ({
         const bg = isItemActive ? "#1d1a27" : undefined;
 
         const item = (
-          <HStack rounded="lg" p={4} bg={bg} spacing={6} cursor="pointer">
+          <HStack
+            transition="all 0.4s"
+            rounded="lg"
+            _hover={{
+              bg: "#282a36",
+            }}
+            p={4}
+            bg={bg}
+            spacing={6}
+            cursor="pointer"
+          >
             <Icon as={icon} boxSize={6} color="#fff" />
             <Text fontWeight={fontWeight} color="#fff" fontSize="xl">
               {t(label)}

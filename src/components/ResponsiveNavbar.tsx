@@ -23,7 +23,8 @@ const ResponsiveNavbar = () => {
   return (
     <>
       <IconButton
-        hidden={!mobile}
+        zIndex={30000}
+        hidden={!mobile || isOpen}
         position="absolute"
         top={10}
         left={4}
