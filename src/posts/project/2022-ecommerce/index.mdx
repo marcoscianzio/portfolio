@@ -12,6 +12,12 @@ While we were developing Lend Lab, my colleague and I engaged in several discuss
 
 In conclusion, I sought to challenge myself by putting my knowledge of TypeORM to the test once again.
 
+Essentially, the application consists of a robust authentication module that allows users to log in using their Github accounts. Once authenticated, users can add products to their shopping cart. Each time an item is added to the cart, the total price dynamically adjusts, reflecting the updated value.
+
+Within the cart, users have the flexibility to modify individual item quantities, either by increasing or decreasing them. Once the user has decided to finalize their purchase, the process redirects to Stripe's billing service to securely and efficiently complete the transaction.
+
+Subsequently, users have the ability to access a comprehensive billing history, where they can review all invoices generated throughout their experience in the application. This functionality enables users to maintain a detailed record of items acquired in each transaction.
+
 ## Technologies
 
 - Typescript

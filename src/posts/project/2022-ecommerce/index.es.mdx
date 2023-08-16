@@ -10,7 +10,13 @@ En mis primeros días como programador, allá por el 2020, trabajé en una aplic
 
 Mientras trabajábamos en el desarrollo de Lend Lab, mi compañero y yo tuvimos varias discusiones sobre la idea de incorporar pagos online mediante Stripe, un concepto completamente nuevo para nosotros. Desafortunadamente, el soporte para Lend Lab cesó, pero aquella idea de integrar pagos online quedó resonando en mi mente.
 
-Finalmente, quería desafiarme a mí mismo y poner a prueba una vez más mi conocimiento en TypeORM.
+Finalmente, quería desafiarme a mí mismo y poner a prueba una vez más mi conocimiento en TypeORM. 
+
+En esencia, la aplicación se compone de un sólido módulo de autenticación que permite a los usuarios iniciar sesión mediante sus cuentas de Github. Una vez autenticados, los usuarios pueden agregar productos a su carrito de compras. Cada vez que se añade un ítem al carrito, el precio total se ajusta de manera dinámica, reflejando el valor actualizado.
+
+Dentro del carrito, los usuarios tienen la flexibilidad de modificar las cantidades individuales de los artículos, ya sea incrementándolas o reduciéndolas. Una vez que el usuario ha decidido finalizar su compra, el proceso se redirige al servicio de facturación de Stripe para completar la transacción de manera segura y eficiente.
+
+Posteriormente, los usuarios tienen la capacidad de acceder a un historial de facturación completo, donde pueden consultar todas las facturas generadas a lo largo de su experiencia en la aplicación. Esta funcionalidad permite a los usuarios tener un registro detallado de los elementos adquiridos en cada transacción.
 
 ## Tecnologías
 
