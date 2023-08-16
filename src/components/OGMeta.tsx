@@ -51,7 +51,7 @@ const OGMeta = ({ properties }: { properties: OGProperties }) => {
       <meta property="og:site_name" content={site_name} />
       {type === "article" && (
         <>
-          <meta property="article:author" content="Marcos Cianzio" />
+          <meta property="article:author" content={author || "Marcos Cianzio"} />
           <meta property="article:section" content={section} />
           <meta property="article:modified_time" content={modified_time} />
           <meta property="article:published_time" content={published_time} />
