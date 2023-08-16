@@ -11,26 +11,36 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useSearch } from "../hooks/useSearch";
 import { orderByNewest } from "../utils/orderByNewest";
+import useOpenGraph from "src/hooks/useOpenGraph";
+import { absUrl } from "src/utils/absUrl";
 
 const Blog: NextPage<InferGetServerSidePropsType<typeof getStaticProps>> = ({
   posts,
 }) => {
   const router = useRouter();
   const { filteredPosts, handleSearch } = useSearch(posts);
-
   const { t } = useTranslation();
+
+  const ogProperties = useOpenGraph({
+    locale: router.locale,
+    url: absUrl(`/${router.locale}/blog`),
+    title: 'Blog - Marcos Cianzio',
+    image: {
+      type: "image/jpeg",
+      url: "/me.jpg",
+      alt: "A picture of me",
+    },
+    description: t("blog:description"),
+    type: "website",
+  });
 
   return (
     <Layout>
       <Head>
         <title>Blog - Marcos Cianzio</title>
-
-        <OGMeta
-          slug={`/${router.locale}/blog`}
-          title="Blog - Marcos Cianzio"
-          description={t("blog:description")}
-        />
         <meta name="description" content={t("blog:description")} />
+        
+        <OGMeta properties={ogProperties} />
       </Head>
 
       <Stack pb={10} spacing={8}>

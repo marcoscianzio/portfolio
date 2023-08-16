@@ -12,6 +12,8 @@ import { PostPage } from "../../types/PostPage";
 import Head from "next/head";
 import OGMeta from "@components/OGMeta";
 import { useRouter } from "next/router";
+import { absUrl } from "src/utils/absUrl";
+import useOpenGraph from "src/hooks/useOpenGraph";
 
 const BlogPost: NextPage<PostPage> = ({
   slug,
@@ -22,18 +24,28 @@ const BlogPost: NextPage<PostPage> = ({
 }) => {
   const router = useRouter();
 
+  const ogProperties = useOpenGraph({
+    locale: router.locale,
+    url: absUrl(`/${router.locale}/blog/${slug}`),
+    title: `${metadata.title} - Marcos Cianzio`,
+    image: {
+      type: "image/jpeg",
+      url: metadata.cover,
+      alt: "Cover",
+    },
+    description: metadata.description,
+    type: "article",
+    section: "Blog",
+    published_time: metadata.date,
+  });
+
   return (
     <Layout>
       <Head>
         <title>{metadata.title}</title>
-
-        <OGMeta
-          image={metadata.cover}
-          slug={`/${router.locale}/blog/${slug}`}
-          title={`${metadata.title} - Marcos Cianzio`}
-          description={metadata.description}
-        />
         <meta name="description" content={metadata.description} />
+
+        <OGMeta properties={ogProperties} />
       </Head>
 
       <PostMainInfo metadata={metadata} />
@@ -91,3 +103,4 @@ export const getStaticPaths: GetStaticPaths<Params> = ({ locales }) => {
     fallback: false,
   };
 };
+

@@ -10,6 +10,8 @@ import MDXComponents from "../../components/MDXComponents";
 import { getAllFilesIds, getFileFromSlug } from "../../lib/mdx";
 import { Params } from "../../types/Params";
 import { PostPage } from "../../types/PostPage";
+import { absUrl } from "src/utils/absUrl";
+import useOpenGraph from "src/hooks/useOpenGraph";
 
 const ProjectPost: NextPage<PostPage> = ({
   slug,
@@ -20,18 +22,28 @@ const ProjectPost: NextPage<PostPage> = ({
 }) => {
   const router = useRouter();
 
+  const ogProperties = useOpenGraph({
+    locale: router.locale,
+    url: absUrl(`/${router.locale}/project/${slug}`),
+    title: `${metadata.title} - Marcos Cianzio`,
+    image: {
+      type: "image/jpeg",
+      url: metadata.cover,
+      alt: "Cover",
+    },
+    description: metadata.description,
+    type: "article",
+    section: "Project",
+    published_time: metadata.date,
+  });
+  
   return (
     <Layout>
       <Head>
         <title>{`${metadata.title} - Marcos Cianzio`}</title>
-
-        <OGMeta
-          image={metadata.cover}
-          slug={`/${router.locale}/project/${slug}`}
-          title={`${metadata.title} - Marcos Cianzio`}
-          description={metadata.description}
-        />
         <meta name="description" content={metadata.description} />
+
+        <OGMeta properties={ogProperties} />
       </Head>
 
       <PostMainInfo metadata={metadata} />

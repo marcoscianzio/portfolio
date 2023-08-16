@@ -11,6 +11,8 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useSearch } from "../hooks/useSearch";
 import { orderByNewest } from "../utils/orderByNewest";
+import { absUrl } from "src/utils/absUrl";
+import useOpenGraph from "src/hooks/useOpenGraph";
 
 const Projects: NextPage<
   InferGetServerSidePropsType<typeof getStaticProps>
@@ -19,17 +21,26 @@ const Projects: NextPage<
   const router = useRouter();
   let { t } = useTranslation();
 
+  const ogProperties = useOpenGraph({
+    locale: router.locale,
+    url: absUrl(`/${router.locale}/projects`),
+    title: `${t("common:projects")} - Marcos Cianzio`,
+    image: {
+      type: "image/jpeg",
+      url: "/me.jpg",
+      alt: "A picture of me",
+    },
+    description: t("projects:description"),
+    type: "website",
+  });
+
   return (
     <Layout>
       <Head>
         <title>{t("common:projects")} - Marcos Cianzio</title>
-
-        <OGMeta
-          slug={`/${router.locale}/projects`}
-          title={`${t("common:projects")} - Marcos Cianzio`}
-          description={t("projects:description")}
-        />
         <meta name="description" content={t("projects:description")} />
+       
+        <OGMeta properties={ogProperties} />
       </Head>
 
       <Stack pb={10} spacing={8}>

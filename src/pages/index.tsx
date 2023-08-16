@@ -8,24 +8,37 @@ import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { IndexPage } from "../types/IndexPage";
 import { orderByNewest } from "../utils/orderByNewest";
+import useOpenGraph from "src/hooks/useOpenGraph";
+import { absUrl } from "src/utils/absUrl";
+import { useRouter } from "next/router";
 
 const Home: NextPage<IndexPage> = ({
   selectedBlogPosts,
   selectedProjectPosts,
 }) => {
   let { t } = useTranslation();
+  const router = useRouter();
+
+  const ogProperties = useOpenGraph({
+    locale: router.locale,
+    url: absUrl("/"),
+    title: `${t("common:home")} - Marcos Cianzio`,
+    image: {
+      type: "image/jpeg",
+      url: "/me.jpg",
+      alt: "A picture of me",
+    },
+    description: t("index:description"),
+    type: "website",
+  });
 
   return (
     <Layout>
       <Head>
         <title>{t("common:home")} - Marcos Cianzio</title>
-
-        <OGMeta
-          slug="/"
-          title={`${t("common:home")} - Marcos Cianzio`}
-          description={t("index:description")}
-        />
         <meta name="description" content={t("index:description")} />
+
+        <OGMeta properties={ogProperties} />
       </Head>
 
       <Stack pb={16} spacing={20}>
